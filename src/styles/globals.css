@@ -1,16 +1,27 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  color: inherit;
-  text-decoration: none;
+@layer base {
+  @font-face {
+    font-family: 'Mulish';
+    src: url('../fonts/Montserrat-Regular.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Montserrat Alternative';
+    src: url('../fonts/MontserratAlternates-Regular.ttf') format('truetype');
+  }
+  html{
+    scroll-behavior: smooth;
+  }
 }
-
-* {
-  box-sizing: border-box;
+@layer utilities {
+  @responsive {
+    .scrollbars-hidden-f {
+      scrollbar-width: none;
+    }
+    .scrollbars-hidden::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }

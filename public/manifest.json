@@ -1,0 +1,21 @@
+{
+  "name": "follo app",
+  "short_name": "follo app",
+  "orientation": "portrait",
+  "start_url": ".",
+  "theme_color": "#0284c7",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "405x633",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "./icons/iconb192.png",
+      "sizes": "405x633",
+      "type": "image/png"
+    }
+  ]
+}
