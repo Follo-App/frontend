@@ -18,7 +18,7 @@ const App = ({ Component, pageProps }) => {
         <link rel="manifest" href="/manifest.json" />
         <link href="/icons/logo192.png" rel="icon" type="image/png" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png"></link>
-        <meta name="theme-color" content="#317EFB" />
+        {/* <meta name="theme-color" content="#317EFB" /> */}
       </Head>
       <Component {...pageProps} />
     </>
