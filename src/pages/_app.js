@@ -17,7 +17,7 @@ const App = ({ Component, pageProps }) => {
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="manifest" href="/manifest.json" />
         <link href="/icons/logo192.png" rel="icon" type="image/png" />
-        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png"></link>
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <meta name="theme-color" content="#317EFB" />
       </Head>
       <Component {...pageProps} />
