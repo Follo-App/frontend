@@ -1,56 +1,48 @@
-import Link from 'next/link'
-import { FaGoogle } from 'react-icons/fa'
+import { useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
+import Tabs from '@/components/Tabs'
+import Login from '@/components/login'
+import Register from '@/components/register'
 
 const Index = () => {
+  const [tab, setTab] = useState('login')
+
   return (
-    <main className="items-center w-full min-h-screen md:flex md:justify-evenly">
-      <div className="flex items-center justify-center w-full text-white bg-blue-600 h-[50vh] md:w-1/2 md:h-screen">
-        <div className="">
-          <img
-            src={require('@/img/iconw192.png')}
-            className="w-auto mx-auto h-36 md:h-44"
-            alt="Follo App white"
-          />
-          <h1 className="mt-8 font-serif text-2xl font-bold capitalize md:text-4xl md:text-white">
-            follo app
+    <main className="min-h-screen lg:flex">
+      {/* intro page */}
+      <div className="lg:text-white text-blue-600 bg-white lg:bg-blue-600 lg:w-[45%] lg:clipHead lg:min-h-screen flex items-center justify-center">
+        <div className="px-8 py-5 sm:px-12">
+          <h1 className="mt-10 text-xl font-bold text-center lg:text-5xl lg:mt-0">
+            Follo App
           </h1>
+          <ul className="hidden mt-6 text-lg list-disc lg:block">
+            <li>Get to monitor and update your medication records.</li>
+            <li>Book appointments with doctors.</li>
+            <li>Residence update incase of emergencies.</li>
+          </ul>
         </div>
       </div>
-      <div className="md:w-1/2 p-4 md:p-10 bg-white flex items-center h-[50vh] md:h-screen">
-        <div className="w-full h-full md:h-[60%] flex flex-col justify-between">
-          <div className="flex flex-col justify-between space-y-2 h-2/5">
-            <Link href="/">
-              <button
-                type="button"
-                className="block w-full md:w-[80%] mx-auto text-white hover:shadow font-semibold uppercase font-serif py-2 bg-blue-600 hover:bg-blue-500 transform transition-all hover:translate-y-1"
-              >
-                Login
-              </button>
-            </Link>
-            <Link href="/">
-              <button
-                type="button"
-                className="block w-full md:w-[80%] mx-auto text-white hover:shadow font-semibold uppercase font-serif py-2 bg-blue-600 hover:bg-blue-500 transform transition-all hover:translate-y-1"
-              >
-                Register
-              </button>
-            </Link>
+      {/* Auth page */}
+      <div className="lg:w-[55%]">
+        {/* form area */}
+        <div className="">
+          <div className="flex justify-center mt-10">
+            <Tabs
+              tabs={{
+                login: 'Login',
+                register: 'Register'
+              }}
+              selected={tab}
+              onChange={setTab}
+              className="mx-auto rounded-2xl bg-sky-100"
+            />
           </div>
-          {/* or */}
-          <div className="relative">
-            <hr className="w-full md:w-[80%] mx-auto border bg-opacity-50 h-[0.05rem] bg-blue-600" />
-            <h6 className="block w-7 text-center mx-auto -mt-3.5 bg-blue-100">
-              or
-            </h6>
+          <div className="px-8 py-5 mt-10 sm:px-12">
+            <AnimatePresence>
+              {tab === 'login' && <Login tab={tab} />}
+              {tab === 'register' && <Register tab={tab} />}
+            </AnimatePresence>
           </div>
-          {/* Google auth button */}
-          <button
-            type="button"
-            className="w-full md:w-[80%] mx-auto text-white hover:shadow font-semibold uppercase font-serif py-2 bg-blue-600 hover:bg-blue-500 flex justify-center transform transition-all hover:translate-y-1"
-          >
-            <FaGoogle className="w-auto h-5" />
-            <span className="ml-3">Google</span>
-          </button>
         </div>
       </div>
     </main>

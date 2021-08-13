@@ -17,11 +17,8 @@
 }
 @layer utilities {
   @responsive {
-    .scrollbars-hidden-f {
-      scrollbar-width: none;
-    }
-    .scrollbars-hidden::-webkit-scrollbar {
-      display: none;
-    }
+    .scrollbars-hidden-f { scrollbar-width: none; }
+    .scrollbars-hidden::-webkit-scrollbar { display: none; }
+    .clipHead { clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%); }
   }
 }

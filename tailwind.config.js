@@ -12,8 +12,8 @@ module.exports = {
       ...defaultTheme.screens
     },
     fontFamily: {
-      sans: ["'Montserrat'", ...defaultTheme.fontFamily.sans],
-      serif: ["'Montserrat Alternates'", ...defaultTheme.fontFamily.serif]
+      serif: ["'Montserrat'", ...defaultTheme.fontFamily.serif],
+      sans: ["'Montserrat Alternates'", ...defaultTheme.fontFamily.sans]
     },
     extend: {
       colors: {
@@ -25,7 +25,11 @@ module.exports = {
         amber: color.amber
       },
       boxShadow: {},
-      backgroundImage: {}
+      backgroundImage: {},
+      listStyleType: {
+        square: 'square',
+        roman: 'upper-roman'
+      }
     }
   },
   variants: {
