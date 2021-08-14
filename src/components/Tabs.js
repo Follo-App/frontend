@@ -36,7 +36,7 @@ function Item({ tab, isSelected, onClick }) {
       {isSelected && (
         <motion.div
           layoutId="highlight"
-          className="absolute inset-0 bg-blue-500 rounded-2xl"
+          className="absolute inset-0 bg-blue-500"
         />
       )}
       <button
@@ -44,7 +44,7 @@ function Item({ tab, isSelected, onClick }) {
         onClick={onClick}
         className={clsx(
           'block w-full relative z-10 px-7 py-1.5 leading-6 sm:text-xl font-semibold focus:outline-none transition-colors duration-300  rounded-2xl',
-          { 'text-white': isSelected, 'text-gray-800': !isSelected }
+          { 'text-white': isSelected, 'text-blue-600': !isSelected }
         )}
       >
         {tab}
