@@ -30,9 +30,9 @@ const Register = ({ tab }) => {
       </h1>
       <form
         method="post"
-        className="w-full mx-auto -mt-10 space-y-4 lg:w-full xl:w-4/5 lg:-mt-0"
+        className="w-full mx-auto -mt-10 space-y-8 lg:w-full xl:w-4/5 lg:-mt-0"
       >
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="">
             <label htmlFor="firstname">Firstname</label>
             <input
@@ -155,7 +155,7 @@ const Register = ({ tab }) => {
             )}
           />
         </div>
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="">
             <label htmlFor="password">Password</label>
             <input
