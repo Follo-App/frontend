@@ -5,20 +5,26 @@
 @layer base {
   @font-face {
     font-family: 'Mulish';
-    src: url('../fonts/Montserrat-Regular.ttf') format('truetype');
+    src: url('../fonts/mulish.ttf') format('truetype');
   }
   @font-face {
     font-family: 'Montserrat Alternative';
-    src: url('../fonts/MontserratAlternates-Regular.ttf') format('truetype');
+    src: url('../fonts/montserrat-alt.ttf') format('truetype');
   }
-  html{
+  html {
     scroll-behavior: smooth;
   }
 }
 @layer utilities {
   @responsive {
-    .scrollbars-hidden-f { scrollbar-width: none; }
-    .scrollbars-hidden::-webkit-scrollbar { display: none; }
-    .clipHead { clip-path: polygon(0% 0%, 95% 0%, 100% 60%, 90% 100%, 0% 100%); }
+    .scrollbars-hidden-f {
+      scrollbar-width: none;
+    }
+    .scrollbars-hidden::-webkit-scrollbar {
+      display: none;
+    }
+    .clipHead {
+      clip-path: polygon(0% 0%, 95% 0%, 100% 60%, 90% 100%, 0% 100%);
+    }
   }
 }

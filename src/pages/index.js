@@ -12,7 +12,7 @@ const Index = () => {
       {/* intro page */}
       <div className="lg:text-white text-blue-600 bg-white lg:bg-blue-600 lg:w-[45%] lg:clipHead lg:min-h-screen flex items-center justify-center">
         <div className="px-8 py-5 lg:space-y-20 sm:px-12">
-          <h1 className="mt-10 text-3xl font-bold text-center lg:text-5xl lg:mt-0">
+          <h1 className="mt-10 font-serif text-3xl font-bold text-center lg:text-5xl lg:mt-0">
             Follo App
           </h1>
           <ul className="hidden px-4 space-y-3 text-xl list-disc lg:block">

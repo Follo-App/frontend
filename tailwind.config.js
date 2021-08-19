@@ -12,8 +12,8 @@ module.exports = {
       ...defaultTheme.screens
     },
     fontFamily: {
-      serif: ["'Montserrat'", ...defaultTheme.fontFamily.serif],
-      sans: ["'Montserrat Alternates'", ...defaultTheme.fontFamily.sans]
+      sans: ["'Mulish'", ...defaultTheme.fontFamily.sans],
+      serif: ["'Montserrat Alternates'", ...defaultTheme.fontFamily.serif]
     },
     extend: {
       colors: {

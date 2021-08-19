@@ -10,7 +10,7 @@ export default function Tabs({
   return (
     <AnimateSharedLayout>
       <ul
-        className={clsx('whitespace-nowrap grid', className, {})}
+        className={clsx('whitespace-nowrap grid rounded-md', className, {})}
         style={{
           gridTemplateColumns: `repeat(${
             Array.isArray(tabs) ? tabs.length : Object.keys(tabs).length
@@ -36,7 +36,7 @@ function Item({ tab, isSelected, onClick }) {
       {isSelected && (
         <motion.div
           layoutId="highlight"
-          className="absolute inset-0 bg-blue-500"
+          className="absolute inset-0 bg-blue-500 rounded-md"
         />
       )}
       <button

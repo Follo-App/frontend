@@ -3,17 +3,16 @@ import { motion } from 'framer-motion'
 import clsx from 'clsx'
 
 const Login = ({ tab }) => {
-  const [email, setEmail] = useState(null)
-  const [password, setPassword] = useState(null)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   return (
     <motion.div
-      animate={tab ? 'login' : 'register'}
+      layout
+      animate={
+        tab == 'login' ? { opacity: 1, x: 0 } : { opacity: 0, x: '100%' }
+      }
       transition={{ delay: 0.5 }}
-      variants={{
-        open: { opacity: 1, x: 0 },
-        closed: { opacity: 0, x: '-100%' }
-      }}
       className="lg:space-y-16"
     >
       <h1
@@ -48,12 +47,11 @@ const Login = ({ tab }) => {
           <input
             type="password"
             name="password"
-            id="email"
-            placeholder={'password'}
-            value={password}
-            onChange={e => setPassword(e.target.value)}
+            id="password"
+            placeholder="password"
+            autoComplete="off"
             className={clsx(
-              'border block w-full px-3 py-2 focus:outline-none text-xl border-blue-300 rounded-lg text-gray-500 focus:ring-blue-200 transition-colors duration-300 focus:ring focus:ring-offset-1 focus:ring-opacity-40'
+              'border block w-full px-3 py-1.5 focus:outline-none text-lg border-blue-300 rounded-lg text-gray-500 focus:ring-blue-200 transition-colors duration-300 focus:ring focus:ring-offset-1 focus:ring-opacity-40'
             )}
           />
         </div>
