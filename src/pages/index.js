@@ -1,26 +1,40 @@
 import { useState } from 'react'
-import { AnimatePresence } from 'framer-motion'
+import { motion, AnimateSharedLayout } from 'framer-motion'
 import Tabs from '@/components/Tabs'
 import Login from '@/components/login'
 import Register from '@/components/register'
+import clsx from 'clsx'
+import { HiChevronDoubleDown } from 'react-icons/hi'
 
 const Index = () => {
-  const [tab, setTab] = useState('login')
+  const [tab, setTab] = useState('login') // login / register
+  const [page, setPage] = useState('index') // index / auth
 
   return (
-    <main className="min-h-screen lg:flex">
+    <main className="lg:flex">
       {/* intro page */}
-      <div className="lg:text-white text-blue-600 bg-white lg:bg-blue-600 lg:w-[45%] lg:clipHead lg:min-h-screen flex items-center justify-center">
-        <div className="px-8 py-5 lg:space-y-20 sm:px-12">
-          <h1 className="mt-10 font-serif text-3xl font-bold text-center lg:text-5xl lg:mt-0">
+      <div
+        className={clsx(
+          'lg:text-white min-h-screen lg:fixed text-blue-600 bg-white lg:bg-blue-600 lg:w-[45%] lg:clipHead transform transition-all lg:min-h-screen flex items-center justify-center',
+          {
+            '-translate-y-full lg:translate-y-0 fixed': page !== 'index'
+          }
+        )}
+      >
+        <div className="px-8 py-5 space-y-20 sm:px-12">
+          <h1 className="mt-10 font-serif text-4xl font-black text-center uppercase lg:text-5xl lg:mt-0">
             Follo App
           </h1>
-          <ul className="hidden px-4 space-y-3 text-xl list-disc lg:block">
-            <li>Get to monitor and update your medication records.</li>
-            <li>Book appointments with doctors.</li>
-            <li>Residence update incase of emergencies.</li>
+          <ul className="px-4 space-y-3 text-xl list-disc">
+            {[
+              'Get to monitor and update your medication records.',
+              'Book appointments with doctors.',
+              'Residence update incase of emergencies.'
+            ].map((point, i) => (
+              <motion.li key={i}>{point}</motion.li>
+            ))}
           </ul>
-          <div className="flex justify-center mt-10 ">
+          <div className="justify-center hidden mt-10 lg:flex">
             <Tabs
               tabs={{
                 login: 'Login',
@@ -28,21 +42,40 @@ const Index = () => {
               }}
               selected={tab}
               onChange={setTab}
-              className="mx-auto bg-white rounded"
+              className="mx-auto bg-blue-100 lg:bg-white"
             />
+          </div>
+          <div className="flex justify-center mt-10 lg:hidden">
+            <button
+              type="button"
+              className="grid w-12 h-12 transition-colors bg-blue-500 rounded-full place-items-center bg-opacity-30 hover:bg-opacity-60"
+              onClick={() => setPage('auth')}
+            >
+              <HiChevronDoubleDown className="w-auto h-7 animate-bounceIn" />
+            </button>
           </div>
         </div>
       </div>
       {/* Auth page */}
-      <div className="lg:w-[55%] flex items-center justify-center">
+      <div
+        className={clsx(
+          'lg:w-[55%] lg:h-screen min-h-screen lg:overflow-y-auto overflow-x-hidden  lg:whitespace-nowrap flex items-center justify-center',
+          {
+            'translate-y-full lg:translate-y-0 fixed lg:right-0':
+              page !== 'auth',
+            'lg:right-0 lg:fixed': page === 'auth'
+          }
+        )}
+      >
         {/* form area */}
-        <div className="w-full">
-          <div className="px-8 py-5 mt-10 sm:px-12">
-            <AnimatePresence>
-              {tab === 'login' && <Login tab={tab} />}
-              {tab === 'register' && <Register tab={tab} />}
-            </AnimatePresence>
-          </div>
+        <div className={clsx('px-8 py-12 w-full mt-10 sm:px-12')}>
+          <AnimateSharedLayout>
+            {tab === 'register' ? (
+              <Register tab={tab} setTab={setTab} />
+            ) : (
+              <Login tab={tab} setTab={setTab} />
+            )}
+          </AnimateSharedLayout>
         </div>
       </div>
     </main>

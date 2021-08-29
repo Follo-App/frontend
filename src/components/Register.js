@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
 
-const Register = ({ tab }) => {
+const Register = ({ setTab }) => {
   const [firstname, setFirstname] = useState('')
   const [lastname, setLastname] = useState('')
   const [date, setDate] = useState('')
@@ -15,22 +15,28 @@ const Register = ({ tab }) => {
   return (
     <motion.div
       layout
-      animate={
-        tab == 'register' ? { opacity: 1, x: 0 } : { opacity: 0, x: '100%' }
-      }
-      transition={{ delay: 0.5 }}
-      className="lg:space-y-16"
+      initial={{ x: 1000, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: 1000, opacity: 0 }}
+      transition={{
+        type: 'spring',
+        duration: 1,
+        delay: 0.25
+        // stiffness: 260,
+        // damping: 20
+      }}
+      className="lg:pt-16 lg:space-y-16"
     >
       <h1
         className={clsx(
-          'mx-auto text-center -mt-10 font-bold text-blue-500 text-3xl hidden lg:block'
+          'mx-auto text-center -mt-16 lg:mt-0 font-bold text-blue-500 text-3xl'
         )}
       >
         Register
       </h1>
       <form
         method="post"
-        className="w-full mx-auto -mt-10 space-y-8 lg:w-full xl:w-4/5 lg:-mt-0"
+        className="w-full mx-auto space-y-8 lg:w-full xl:w-4/5 lg:-mt-0"
       >
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="">
@@ -195,6 +201,18 @@ const Register = ({ tab }) => {
         >
           Register
         </button>
+
+        <p className={clsx('text-center mt-5')}>
+          Already have a{' '}
+          <span className="font-serif font-bold text-blue-500">Follo App</span>{' '}
+          account,{' '}
+          <span
+            className="font-serif font-bold text-blue-500 cursor-pointer"
+            onClick={() => setTab('login')}
+          >
+            Login
+          </span>
+        </p>
       </form>
     </motion.div>
   )

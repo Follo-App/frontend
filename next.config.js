@@ -2,7 +2,7 @@ const path = require('path')
 const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
 const withPlugins = require('next-compose-plugins')
-const withImages = require('next-images')
+// const withImages = require('next-images')
 
 module.exports = withPlugins(
   [
@@ -15,20 +15,19 @@ module.exports = withPlugins(
           disable: process.env.NODE_ENV === 'development'
         }
       }
-    ],
-    [withImages]
+    ]
+    // [withImages]
   ],
   {
     pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
-    wepack: (config, options) => {
-      if (!options.dev) {
-        options.defaultLoaders.babel.options.cache = false
-      }
+    webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+      // prevent caching
+      defaultLoaders.babel.options.cache = false
 
       config.module.rules.push({
         test: /\.(jpe?g|png|svg|gif|ico|eot|ttf|woff|woff2|mp4|pdf|webm|txt)$/i,
         use: [
-          options.defaultLoaders.babel,
+          defaultLoaders.babel,
           {
             loader: 'file-loader',
             options: {

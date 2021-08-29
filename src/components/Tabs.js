@@ -10,7 +10,7 @@ export default function Tabs({
   return (
     <AnimateSharedLayout>
       <ul
-        className={clsx('whitespace-nowrap grid rounded-md', className, {})}
+        className={clsx('whitespace-nowrap grid rounded-lg', className, {})}
         style={{
           gridTemplateColumns: `repeat(${
             Array.isArray(tabs) ? tabs.length : Object.keys(tabs).length
@@ -43,7 +43,7 @@ function Item({ tab, isSelected, onClick }) {
         type="button"
         onClick={onClick}
         className={clsx(
-          'block w-full relative z-10 px-7 py-1.5 leading-6 sm:text-xl font-semibold focus:outline-none transition-colors duration-300  rounded-2xl',
+          'block w-full relative z-10 px-7 py-1.5 leading-6 sm:text-xl font-semibold focus:outline-none transition-colors duration-300  rounded-lg',
           { 'text-white': isSelected, 'text-blue-600': !isSelected }
         )}
       >
